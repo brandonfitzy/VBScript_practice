@@ -1,0 +1,40 @@
+'function to print in message box to display fibonocci sequence to the nth term
+	
+	'input box for user to define how long of the sequence to generate
+	n= Inputbox ("How many elements of the Fibonaci Sequence would you like calculated?","Enter a postive integer:")
+	'error handling convert n to int incase it is not
+	n=Fix(n)
+	'error handling if input in int but negetive or 0
+	If n=<0 Then
+		n=Inputbox("You're number was not positive, please enter a positive integer", "Enter a postive integer:")
+	End If
+	n=n-1
+	'defining first two values
+	x0=0
+	x1=1
+	'begining sequence str
+	sequence="0 "
+	'for loop, each step is one element
+	For i = 0 To n Step 1
+		'first element 
+		If i=0 Then
+			sequence=sequence
+		'second element
+		ElseIf i = 1 Then
+			str=Cstr(x1)
+			sequence = sequence & str & " "
+		'all other elements
+		else
+			'sum of the last two
+			sum=x0+x1
+			'convert sum to str
+			str=Cstr(sum)
+			'concat sum to sequence creating the next element
+			sequence = sequence & str & " "
+			'changing x0 and x1 for next iteration
+			x0=x1
+			x1=sum
+		End If
+	Next
+	'display sequence in message box
+	msgbox(sequence)
