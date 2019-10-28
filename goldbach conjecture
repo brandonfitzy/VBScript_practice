@@ -1,0 +1,61 @@
+'Goldbach conjecture
+'any positve even integer greater than 2 can be written as the sum of two primes
+
+n=inputbox("Enter a postive even integer greater than 2 for the Goldbach Conjecture","Enter a number")
+if n\2=0 then 
+	n=inputbox("Your number was not even","Enter a number")
+end if 
+if n<2 then 	
+	n=inputbox("Your number was not greater than 2","Enter a number")
+end if
+
+Dim nprimes()
+nprimes()=primes(n)
+
+Dim sumPairArr(0,1)
+row=0
+Dim x
+for i = 0 to stp step 1
+	for j = i to stp step 1
+		if sumton(nprimes(i),nprimes(j),n)=1 then
+			sumPairArr(row,0)=i
+			sumPairArr(row,1)=j
+			row=row+1
+			redim preserve sumPairArr(row,1)
+		end if
+	next
+next
+
+function primes(x)
+	dim primesarr()
+	primesarr(0)=2
+	stp=1
+	for i = 3 to x step 2
+		if isPrime(i)=1 then 
+			primesarr(stp)=i
+			stp=stp+1
+		end if 
+	next
+	primes=primesarr
+end function
+
+function isPrime(y)
+dim boolprime
+	boolprime=1
+	for i=2 to y-1 step 1
+		if i\y=0 then
+			boolprime=0
+		end if
+	next
+	isPrime=boolprime
+end function
+
+function sumton(x,y,n)
+dim booldosum
+	if (x+y)=n then
+	booldosum=1
+	else
+	booldosum=0
+	somton=booldosum
+	end if
+end function
